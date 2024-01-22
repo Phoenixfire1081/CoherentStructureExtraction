@@ -8,6 +8,14 @@ This code is an extension of the neighbor scanning procedure of Moisy & Jiménez
 
 While the neighbor scanning procedure yields good results at large thresholds (where structures tend to be spaced apart), it groups together closely spaced structures at low threshold values. Upon visualization, it is easily observable that these structures are separate. When these structures are used for further post-processing, such as geometry classification with local parameters such as Shape Index and Curvedness, it will result in an inaccurate classification of the geometry. To mitigate this issue, a correction with the marching cubes algorithm (see Lorensen & Cline, 1987 [3]) is applied. For details on the implementation, please see Harikrishnan et al., 2021 [4].
 
+## Installation
+
+The code is available as a package from PyPI: https://pypi.org/project/extractstructuresMC/
+
+```
+pip install extractstructuresMC
+```
+
 ## References
 
 [1] Moisy, Frédéric, and Javier Jiménez. "Geometry and clustering of intense structures in isotropic turbulence." Journal of fluid mechanics 513 (2004): 111-133.
