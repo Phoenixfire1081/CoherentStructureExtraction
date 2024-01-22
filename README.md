@@ -4,7 +4,7 @@
 
 This code is an extension of the neighbor scanning procedure of Moisy & Jiménez, 2004 [1] to extract structures from 3D scalar fields such as vorticity magnitude, Q-criterion etc. This type of partitioninng in the computer graphics or computer vision community is termed 'segmentation'. For the classic segmentation techniques, see the review paper of Pal & Pal, 1993 [2].
 
-## Neighbor scanning and marching cubes correction
+## Neighbor scanning procedure with marching cubes correction
 
 While the neighbor scanning procedure yields good results at large thresholds (where structures tend to be spaced apart), it groups together closely spaced structures at low threshold values. Upon visualization, it is easily observable that these structures are separate. When these structures are used for further post-processing, such as geometry classification with local parameters such as Shape Index and Curvedness, it will result in an inaccurate classification of the geometry. To mitigate this issue, a correction with the marching cubes algorithm (see Lorensen & Cline, 1987 [3]) is applied. For details on the implementation, please see Harikrishnan et al., 2021 [4].
 
