@@ -1,6 +1,6 @@
 # Extraction (segmentation) of structures* from 3D scalar fields
 
-*structure - set of adjacent points satisfying a threshold (see Moisy & Jiménez 2004, JFM)
+***structure** - set of adjacent points satisfying a threshold (see Moisy & Jiménez 2004, JFM)
 
 This code is an extension of the neighbor scanning procedure of Moisy & Jiménez, 2004 [1] to extract structures from 3D scalar fields such as vorticity magnitude, Q-criterion etc. This type of partitioninng in the computer graphics or computer vision community is termed 'segmentation'. For the classic segmentation techniques, see the review paper of Pal & Pal, 1993 [2].
 
