@@ -16,6 +16,69 @@ The code is available as a package from PyPI: https://pypi.org/project/extractst
 pip install extractstructuresMC
 ```
 
+## Example - Extracting structures from the given test data
+
+Download testData.bin from the GitHub website first.
+
+```
+import numpy as np
+import array
+from extractStructuresWithMC import extractStructuresMC
+
+# Select file to run tests on
+_filenameRead = 'testData.bin'
+
+# What indexing does it use?
+# This refers to array order
+# See here for a full description: https://docs.oracle.com/cd/E19957-01/805-4940/z400091044d0/index.html
+# Python uses C-order indexing (or row-major order). For this set _zFastest = True
+_zFastest = True
+
+# Threshold value for testing
+_threshVal = 47
+
+# Set additional parameters
+
+# Writes information relating to percolation analysis.
+_writePercolationData = False
+
+# Writes structure location information.
+# Useful for visualization purposes
+_writeNeighborInformation = True
+
+# Set data related parameters
+xlen = 200 
+ylen = 328
+zlen = 234
+
+# Set precision of binary data. 'f' is 32-bit floating point data.
+# For others, see here: https://docs.python.org/3/library/array.html
+precision = 'f'
+
+# Use array to read data. This is fast for binary files.
+data = array.array(precision)
+fr = open(_filenameRead, 'rb')
+data.fromfile(fr, (xlen*ylen*zlen))
+fr.close()
+
+# Convert to numpy array
+data = np.array(data, dtype = np.float32)
+
+# Print out details
+_verbose = True
+
+# Use Marching Cubes neighbor correction (more computation power required)
+_marchingCubesExt = True
+
+extractStructuresObj = extractStructuresMC(_threshVal, data, \
+xlen, ylen, zlen, _zFastest, _verbose, \
+_writeNeighborInformation, _writePercolationData, _marchingCubesExt)
+structureGrid = extractStructuresObj.extract()
+
+print('Expected number of structures at threshold 47: 31, result: ', len(np.unique(structureGrid))-1)
+print('NOTE: structure 0 is empty space. len(np.unique(structureGrid)) counts it as well.')
+```
+
 ## References
 
 [1] Moisy, Frédéric, and Javier Jiménez. "Geometry and clustering of intense structures in isotropic turbulence." Journal of fluid mechanics 513 (2004): 111-133.
